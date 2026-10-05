@@ -1,0 +1,41 @@
+CREATE SCHEMA IF NOT EXISTS raw;
+
+--if new tag columns are introduced, use ADD COLUMN. All should be VARCHAR.
+
+CREATE TABLE IF NOT EXISTS raw.osm_street_segment (
+    district                    VARCHAR NOT NULL,
+    osm_id                      VARCHAR,
+    highway                     VARCHAR,
+    "name"                      VARCHAR,
+    "name:1908-1918"            VARCHAR,
+    "name:1908-1945"            VARCHAR,
+    "name:1918-1945"            VARCHAR,
+    "name:de"                   VARCHAR,
+    "name:en"                   VARCHAR,
+    "name:etymology"            VARCHAR,
+    "name:etymology:wikidata"   VARCHAR,
+    "name:etymology:wikipedia"  VARCHAR,
+    "name:hu"                   VARCHAR,
+    "name:ru"                   VARCHAR,
+    "name:sk"                   VARCHAR,
+    "name:wikipedia"            VARCHAR,
+    "network:wikidata"          VARCHAR,
+    "old_name"                  VARCHAR,
+    "old_name:-1991-04-01"      VARCHAR,
+    "old_name:1918-1938"        VARCHAR,
+    "old_name:1920-1932"        VARCHAR,
+    "old_name:1932-WWII"        VARCHAR,
+    "old_name:1939-1945"        VARCHAR,
+    "old_name:?-1991-04-01"     VARCHAR,
+    "old_name:de"               VARCHAR,
+    "old_name:de:until_1918"    VARCHAR,
+    "old_name:en"               VARCHAR,
+    "old_name:hu"               VARCHAR,
+    "old_name:hu:until_1918"    VARCHAR,
+    "short_name"                VARCHAR,
+    "sorting_name"              VARCHAR,
+    "start_date"                VARCHAR,
+    "wikidata"                  VARCHAR,
+    "wikipedia"                 VARCHAR,
+    geom                        GEOMETRY
+);
