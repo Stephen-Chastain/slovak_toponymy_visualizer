@@ -1,5 +1,5 @@
 --Creates table of wikidata etymology table from the QID codes query where it exists.
---This is joined to the  
+
 
 CREATE OR REPLACE TABLE raw.wikidata_namesake AS
 SELECT

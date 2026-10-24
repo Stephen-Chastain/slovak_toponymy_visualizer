@@ -1,4 +1,12 @@
---First part dissolves feature segments into streets by grouping by name
+--First part dissolves feature segments into streets by grouping by name. Segment after UNION ALL does the same for squares/etc. which are stored as polygons.
+
+
+--Second part creates a table of the results of  the etymology columns in OpenStreetMap for subsequent 04 and 05 steps which create
+-- a string for a wikidata query and read those parts into a table in raw, respectively.
+
+load SPATIAL;
+
+--FIRST PART
 
 CREATE OR REPLACE TABLE raw.osm_street AS
 SELECT
@@ -31,8 +39,8 @@ WHERE name IS NOT NULL
   AND ST_GeometryType(geom) IN ('POLYGON', 'MULTIPOLYGON')
 GROUP BY district, name;
 
--- Second part creates a table of the results of  the etymology columns in OpenStreetMap for subsequent 04 and 05 steps which create
--- a string for a wikidata query and read those parts into a table in raw, respectively.
+-- SECOND PART
+
 CREATE OR REPLACE TABLE raw.etymology_coverage AS
 WITH segment AS (
     SELECT

@@ -1,4 +1,5 @@
 --creates plaintext file of delimited qid from the OSM name:etymology:wikidata field to automatically connect to wikidata entries.
+load SPATIAL;
 
 COPY (
   WITH good_qid AS (

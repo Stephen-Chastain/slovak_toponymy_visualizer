@@ -1,0 +1,11 @@
+copy and paste the text below for OSM queries at https://overpass-turbo.eu/. 
+
+Second line 4 area() = district code placeholder.
+
+[out:json][timeout:300];
+area(XxXxXxXxXx)->.a;
+way(area.a)["highway"]["name"];
+out geom;
+
+district codes used:
+3601700677 (Bratislava Staré Mesto) 6.10.26 for MVP setup and architecture design.

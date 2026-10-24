@@ -1,0 +1,25 @@
+-- copy below and replace
+
+SELECT ?item ?itemLabel_sk ?itemLabel_en ?description_sk ?description_en
+       ?image ?birth ?death ?article_sk ?article_en
+WHERE {
+  VALUES ?item { __QIDS__ }
+
+  OPTIONAL { ?item wdt:P18  ?image. }
+  OPTIONAL { ?item wdt:P569 ?birth. }
+  OPTIONAL { ?item wdt:P570 ?death. }
+
+  OPTIONAL {
+    ?article_sk schema:about ?item ;
+                schema:isPartOf <https://sk.wikipedia.org/> .
+  }
+  OPTIONAL {
+    ?article_en schema:about ?item ;
+                schema:isPartOf <https://en.wikipedia.org/> .
+  }
+
+  OPTIONAL { ?item rdfs:label ?itemLabel_sk. FILTER(LANG(?itemLabel_sk) = "sk") }
+  OPTIONAL { ?item rdfs:label ?itemLabel_en. FILTER(LANG(?itemLabel_en) = "en") }
+  OPTIONAL { ?item schema:description ?description_sk. FILTER(LANG(?description_sk) = "sk") }
+  OPTIONAL { ?item schema:description ?description_en. FILTER(LANG(?description_en) = "en") }
+}
