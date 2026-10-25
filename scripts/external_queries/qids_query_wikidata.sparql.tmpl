@@ -1,25 +1,33 @@
--- copy below and replace
-
-SELECT ?item ?itemLabel_sk ?itemLabel_en ?description_sk ?description_en
-       ?image ?birth ?death ?article_sk ?article_en
+SELECT ?item
+       (SAMPLE(?lab_sk)  AS ?itemLabel_sk)
+       (SAMPLE(?lab_en)  AS ?itemLabel_en)
+       (SAMPLE(?desc_sk) AS ?description_sk)
+       (SAMPLE(?desc_en) AS ?description_en)
+       (SAMPLE(?img)     AS ?image)
+       (SAMPLE(?b)       AS ?birth)
+       (SAMPLE(?d)       AS ?death)
+       (SAMPLE(?art_sk)  AS ?article_sk)
+       (SAMPLE(?art_en)  AS ?article_en)
+       (GROUP_CONCAT(DISTINCT ?citLabel;  separator="; ") AS ?citizenship)
+       (GROUP_CONCAT(DISTINCT ?occLabel;  separator="; ") AS ?occupation)
+       (GROUP_CONCAT(DISTINCT ?instLabel; separator="; ") AS ?instance_of)
 WHERE {
   VALUES ?item { __QIDS__ }
 
-  OPTIONAL { ?item wdt:P18  ?image. }
-  OPTIONAL { ?item wdt:P569 ?birth. }
-  OPTIONAL { ?item wdt:P570 ?death. }
+  OPTIONAL { ?item wdt:P18  ?img. }
+  OPTIONAL { ?item wdt:P569 ?b. }
+  OPTIONAL { ?item wdt:P570 ?d. }
 
-  OPTIONAL {
-    ?article_sk schema:about ?item ;
-                schema:isPartOf <https://sk.wikipedia.org/> .
-  }
-  OPTIONAL {
-    ?article_en schema:about ?item ;
-                schema:isPartOf <https://en.wikipedia.org/> .
-  }
+  OPTIONAL { ?item wdt:P27  ?cit.  ?cit  rdfs:label ?citLabel.  FILTER(LANG(?citLabel)  = "en") }
+  OPTIONAL { ?item wdt:P106 ?occ.  ?occ  rdfs:label ?occLabel.  FILTER(LANG(?occLabel)  = "en") }
+  OPTIONAL { ?item wdt:P31  ?inst. ?inst rdfs:label ?instLabel. FILTER(LANG(?instLabel) = "en") }
 
-  OPTIONAL { ?item rdfs:label ?itemLabel_sk. FILTER(LANG(?itemLabel_sk) = "sk") }
-  OPTIONAL { ?item rdfs:label ?itemLabel_en. FILTER(LANG(?itemLabel_en) = "en") }
-  OPTIONAL { ?item schema:description ?description_sk. FILTER(LANG(?description_sk) = "sk") }
-  OPTIONAL { ?item schema:description ?description_en. FILTER(LANG(?description_en) = "en") }
+  OPTIONAL { ?art_sk schema:about ?item ; schema:isPartOf <https://sk.wikipedia.org/> . }
+  OPTIONAL { ?art_en schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }
+
+  OPTIONAL { ?item rdfs:label ?lab_sk.  FILTER(LANG(?lab_sk)  = "sk") }
+  OPTIONAL { ?item rdfs:label ?lab_en.  FILTER(LANG(?lab_en)  = "en") }
+  OPTIONAL { ?item schema:description ?desc_sk. FILTER(LANG(?desc_sk) = "sk") }
+  OPTIONAL { ?item schema:description ?desc_en. FILTER(LANG(?desc_en) = "en") }
 }
+GROUP BY ?item

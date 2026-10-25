@@ -11,55 +11,55 @@ SET VARIABLE gid_name_history = '378580274';
 
 CREATE OR REPLACE TABLE curated.feature AS
 SELECT
-    trim(feature_id)                AS feature_id,
-    trim(district)                  AS district,
-    name,
-    nullif(trim(qid), '')           AS qid,
-    lower(trim(qid_conflict)) IN ('true','1','yes') AS qid_conflict,
-    nullif(trim(category), '')      AS category,
-    nullif(category_note, '')       AS category_note,
-    nullif(context, '')             AS context
-FROM read_csv(getvariable('sheet') || 'gid_feature', header = true, all_varchar = true);
+    trim(f.feature_id)                AS feature_id,
+    trim(f.district)                  AS district,
+    f.name,
+    nullif(trim(f.qid), '')           AS qid,
+    lower(trim(f.qid_conflict)) IN ('true','1','yes') AS qid_conflict,
+    nullif(trim(f.category), '')      AS category,
+    nullif(f.category_note, '')       AS category_note,
+    nullif(f.context, '')             AS context
+FROM read_csv(getvariable('sheet') || getvariable('gid_feature'), header = true, all_varchar = true) AS f;
 
 CREATE OR REPLACE TABLE curated.namesake AS
 SELECT
-    trim(qid)                       AS qid,
-    label_en,
-    label_sk,
-    description_en,
-    description_sk,
-    try_cast(birth_date AS DATE)    AS birth_date,
-    try_cast(death_date AS DATE)    AS death_date,
-    article_en,
-    article_sk,
-    image_url,
-    nullif(blurb_en, '')            AS blurb_en,
-    nullif(blurb_sk, '')            AS blurb_sk,
-    nullif(trim(category), '')      AS category,
-    nullif(source_note, '')         AS source_note
-FROM read_csv(getvariable('sheet') || 'gid_namesake', header = true, all_varchar = true);
+    trim(n.qid)                       AS qid,
+    n.label_en,
+    n.label_sk,
+    n.description_en,
+    n.description_sk,
+    try_cast(n.birth_date AS DATE)    AS birth_date,
+    try_cast(n.death_date AS DATE)    AS death_date,
+    n.article_en,
+    n.article_sk,
+    n.image_url,
+    nullif(n.blurb_en, '')            AS blurb_en,
+    nullif(n.blurb_sk, '')            AS blurb_sk,
+    nullif(trim(n.category), '')      AS category,
+    nullif(n.source_note, '')         AS source_note
+FROM read_csv(getvariable('sheet') || getvariable('gid_namesake'), header = true, all_varchar = true) AS n;
 
 CREATE OR REPLACE TABLE curated.category AS
 SELECT
-    trim(category)                  AS category,
-    label_en,
-    label_sk,
-    trim(color)                     AS color,
-    try_cast(sort_order AS INTEGER) AS sort_order
-FROM read_csv(getvariable('sheet') || 'gid_category', header = true, all_varchar = true);
+    trim(c.category)                  AS category,
+    c.label_en,
+    c.label_sk,
+    trim(c.color)                     AS color,
+    try_cast(c.sort_order AS INTEGER) AS sort_order
+FROM read_csv(getvariable('sheet') || getvariable('gid_category'), header = true, all_varchar = true) AS c;
 
 CREATE OR REPLACE TABLE curated.name_history AS
 SELECT
-    trim(feature_id)                AS feature_id,
-    current_name,
-    name,
-    nullif(trim(lang), '')          AS lang,
-    nullif(trim(valid_from), '')    AS valid_from,
-    nullif(trim(valid_to), '')      AS valid_to,
-    tag,
-    source,
-    nullif(note, '')                AS note
-FROM read_csv(getvariable('sheet') || 'gid_name_history', header = true, all_varchar = true);
+    trim(h.feature_id)                AS feature_id,
+    h.current_name,
+    h.name,
+    nullif(trim(h.lang), '')          AS lang,
+    nullif(trim(h.valid_from), '')    AS valid_from,
+    nullif(trim(h.valid_to), '')      AS valid_to,
+    h.tag,
+    h.source,
+    nullif(h.note, '')                AS note
+FROM read_csv(getvariable('sheet') || getvariable('gid_name_history'), header = true, all_varchar = true) AS h;
 
 
 CREATE OR REPLACE TABLE curated.feature AS
