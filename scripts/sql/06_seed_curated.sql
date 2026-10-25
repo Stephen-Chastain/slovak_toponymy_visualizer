@@ -113,7 +113,7 @@ COPY (
         WHERE historical_name IS NOT NULL
           AND trim(historical_name) <> ''
     )
-    SELECT feature_id, current_name, name, lang, valid_from, valid_to, tag, source, note
+    SELECT feature_id, current_name, name, lang, valid_from, valid_to, tag, source, context
     FROM mapped
     ORDER BY feature_id, valid_from, name
 ) TO 'data/out/seed_name_history.csv' (HEADER, DELIMITER ',');
