@@ -8,6 +8,8 @@ SET VARIABLE gid_feature      = '0';
 SET VARIABLE gid_namesake     = '860820447';
 SET VARIABLE gid_category     = '1880283247';
 SET VARIABLE gid_name_history = '378580274';
+SET VARIABLE gid_nationality =  '1294466999';
+SET VARIABLE gid_occupation = '1246602498';
 
 CREATE OR REPLACE TABLE curated.feature AS
 SELECT
@@ -33,6 +35,11 @@ SELECT
     n.article_en,
     n.article_sk,
     n.image_url,
+    n.wd_citizenship, 
+    n.wd_occupation, 
+    n.wd_instance_of, 
+    nullif(trim(n.nationality), ''), 
+    nullif(trim(n.occupation), '')
     nullif(n.blurb_en, '')            AS blurb_en,
     nullif(n.blurb_sk, '')            AS blurb_sk,
     nullif(trim(n.category), '')      AS category,
@@ -61,6 +68,15 @@ SELECT
     nullif(h.note, '')                AS note
 FROM read_csv(getvariable('sheet') || getvariable('gid_name_history'), header = true, all_varchar = true) AS h;
 
+CREATE OR REPLACE TABLE curated.nationality AS
+SELECT
+    trim(a.nationality)               AS nationality,
+    a.label_en,
+    a.label_sk,
+    try_cast(a.sort_order AS INTEGER) AS sort_order
+FROM read_csv(getvariable('sheet') || getvariable('gid_nationality'),
+              header = true, all_varchar = true) AS a;
+
 
 CREATE OR REPLACE TABLE curated.feature AS
 SELECT * FROM read_csv(getvariable('sheet') || getvariable('gid_feature'), header = true);
@@ -79,3 +95,5 @@ COPY curated.feature  TO 'data/curated/feature.csv'  (HEADER, DELIMITER ',');
 COPY curated.namesake TO 'data/curated/namesake.csv' (HEADER, DELIMITER ',');
 COPY curated.category TO 'data/curated/category.csv' (HEADER, DELIMITER ',');
 COPY curated.name_history TO 'data/curated/name_history.csv' (HEADER, DELIMITER ',');
+COPY curated.nationality TO 'data/curated/nationality.csv' (HEADER, DELIMITER ',');
+COPY curated.occupation  TO 'data/curated/occupation.csv'  (HEADER, DELIMITER ',');

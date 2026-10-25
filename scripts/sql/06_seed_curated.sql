@@ -44,6 +44,12 @@ COPY (
         w.article_en,
         w.article_sk,
         w.image_url,
+        w.wd_citizenship,        -- wd prefix for Wikidata pulls. Only here for reference.
+        w.wd_occupation,         -- wd prefix for Wikidata pulls. Only here for reference.
+        w.wd_instance_of,        -- wd prefix for Wikidata pulls. Only here for reference.
+        ''  AS category,
+        ''  AS nationality,
+        ''  AS occupation,
         ''                       AS blurb_en,
         ''                       AS blurb_sk,
         ''                       AS category,
@@ -117,6 +123,8 @@ COPY (
     FROM mapped
     ORDER BY feature_id, valid_from, name
 ) TO 'data/out/seed_name_history.csv' (HEADER, DELIMITER ',');
+
+
 
 -- Collision check for duplicate features which could erase manually curated data
 SELECT feature_id, count(*), list(name)
