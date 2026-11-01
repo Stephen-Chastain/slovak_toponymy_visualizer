@@ -1,155 +1,155 @@
 feature_id,current_name,name,lang,valid_from,valid_to,tag,source,context
-stare-mesto--bastova,Baštová,Basteigasse,de,"","",old_name:de,osm,""
-stare-mesto--bastova,Baštová,Bástya utca,hu,"","",old_name:hu,osm,""
-stare-mesto--bazova,Bazová,Bodza-utca,hu,"","",old_name:hu,osm,""
-stare-mesto--bazova,Bazová,Hollergasse,de,"","",old_name:de,osm,""
-stare-mesto--bernolakova,Bernolákova,Leyer utca;Walterskirchen utca,hu,"","",old_name:hu,osm,""
-stare-mesto--bernolakova,Bernolákova,Leyergasse;Walterskirchengasse,de,"","",old_name:de,osm,""
-stare-mesto--bezrucova,Bezručova,Raneys István utca,hu,"","",old_name:hu,osm,""
-stare-mesto--bezrucova,Bezručova,Raneys-Gasse,de,"","",old_name:de,osm,""
-stare-mesto--biela,Biela,Corvingasse,de,"","",old_name:de,osm,""
-stare-mesto--biela,Biela,Korvin utca,hu,"","",old_name:hu,osm,""
-stare-mesto--blumentalska,Blumentálska,Virágvölgy utca,hu,"","",old_name:hu,osm,""
-stare-mesto--blumentalska,Blumentálska,Virágvölgy utca,hu,"","",name:hu,osm,""
-stare-mesto--cajakova,Čajakova,Küsserova,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--cintorinska,Cintorínska,Temető utca,hu,"","",name:hu,osm,""
-stare-mesto--drevena,Drevená,Fa-utca,hu,"","",name:hu,osm,""
-stare-mesto--dunajska,Dunajská,Duna utca,hu,"","",name:hu,osm,""
-stare-mesto--farska,Farská,Neugassel,de,"","",old_name:de,osm,""
-stare-mesto--farska,Farská,Plébánia utca,hu,"","",old_name:hu,osm,""
-stare-mesto--frantiskanska,Františkánska,Barát utca,hu,"","",old_name:hu,osm,""
-stare-mesto--frantiskanska,Františkánska,Barát utca,hu,"","",name:hu,osm,""
-stare-mesto--frantiskanska,Františkánska,Franziskanergasse,de,"","",old_name:de,osm,""
-stare-mesto--frantiskanske-namestie,Františkánske námestie,Corvingasse,de,"","",old_name:de,osm,""
-stare-mesto--frantiskanske-namestie,Františkánske námestie,Dibrovo námestie,"","",1991-04-01,old_name:-1991-04-01,osm,""
-stare-mesto--frantiskanske-namestie,Františkánske námestie,Ferenciek tere,hu,"","",name:hu,osm,""
-stare-mesto--gorkeho,Gorkého,Andrássy Gyula-Gasse,de,"",1918,old_name:de:until_1918,osm,""
-stare-mesto--gorkeho,Gorkého,Andrássy Gyula-utca,hu,"",1918,old_name:hu:until_1918,osm,""
-stare-mesto--gorkeho,Gorkého,Ondrejská,"",1920,1932,old_name:1920-1932,osm,""
-stare-mesto--gorkeho,Gorkého,Goetheho,"",1932,1939,old_name:1932-WWII,osm,""
-stare-mesto--grosslingova,Grösslingová,Grössling utca,hu,"","",name:hu,osm,""
-stare-mesto--gundulicova,Gunduličova,Kilit-utca,hu,"","",name:hu,osm,""
-stare-mesto--hlavne-namestie,Hlavné námestie,Fő tér,hu,"","",name:hu,osm,""
-stare-mesto--hlboka-cesta,Hlboká cesta,Mély út,hu,"","",old_name:hu,osm,""
-stare-mesto--hlboka-cesta,Hlboká cesta,Tiefer weg,de,"","",old_name:de,osm,""
-stare-mesto--hodzovo-namestie,Hodžovo námestie,Grassalkovich tér,hu,"","",name:hu,osm,""
-stare-mesto--hodzovo-namestie,Hodžovo námestie,Mierové námestie,"","",1991-04-01,old_name:-1991-04-01,osm,""
-stare-mesto--hviezdoslavovo-namestie,Hviezdoslavovo námestie,Sétatér,hu,"","",name:hu,osm,""
-stare-mesto--kamenne-namestie,Kamenné námestie,Kő-tér,hu,"","",name:hu,osm,""
-stare-mesto--kapitulska,Kapitulská,Káptalan utca,hu,"","",name:hu,osm,""
-stare-mesto--kapucinska,Kapucínska,Kapuczínus utca,hu,"","",old_name:hu,osm,""
-stare-mesto--kapucinska,Kapucínska,Kapuzinergasse,de,"","",old_name:de,osm,""
-stare-mesto--karadzicova,Karadžičova,Zsigmond király-Gasse,de,"","",old_name:de,osm,""
-stare-mesto--karadzicova,Karadžičova,Zsigmond király-utca,hu,"","",old_name:hu,osm,""
-stare-mesto--klariska,Klariská,Klarissinnengasse,de,"","",old_name:de,osm,""
-stare-mesto--klariska,Klariská,Klarissza utca,hu,"","",old_name:hu,osm,""
-stare-mesto--klemensova,Klemensova,Kempelenova,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--klobucnicka,Klobučnícka,Kalapos utca,hu,"","",old_name:hu,osm,""
-stare-mesto--kollarovo-namestie,Kollárovo námestie,Gabona tér,hu,"","",name:hu,osm,""
-stare-mesto--konventna,Konventná,Konvent utca,hu,"","",name:hu,osm,""
-stare-mesto--kosicka,Košická,Martanovičova,"","",1991-04-01,old_name:-1991-04-01,osm,""
-stare-mesto--kostolna,Kostolná,Templom utca,hu,"","",name:hu,osm,""
-stare-mesto--kupelna,Kúpeľná,Fürdő utca,hu,"","",name:hu,osm,""
-stare-mesto--kuzmanyho,Kuzmányho,Ujtelep út,hu,"","",name:hu,osm,""
-stare-mesto--kysucka,Kysucká,Simonyi Gyula Weg,de,"","",old_name:de,osm,""
-stare-mesto--kysucka,Kysucká,Simonyi Gyula-útca,hu,"","",old_name:hu,osm,""
-stare-mesto--laurinska,Laurinská,Lorenzertorgasse,de,"","",old_name:de,osm,""
-stare-mesto--laurinska,Laurinská,Lőrinckapu utca,hu,"","",old_name:hu,osm,""
-stare-mesto--lermontovova,Lermontovova,Günther Vilmos-utca,hu,"","",name:hu,osm,""
-stare-mesto--lovinskeho,Lovinského,Antónia út,hu,"","",old_name:hu,osm,""
-stare-mesto--mateja-bela,Mateja Bela,Arany János-utca,hu,"","",name:hu,osm,""
-stare-mesto--medena,Medená,Fučíkova,"","",1991-04-01,old_name:?-1991-04-01,osm,""
-stare-mesto--medena,Medená,Grössling utca,hu,"","",name:hu,osm,""
-stare-mesto--medena,Medená,Grössling utca,hu,"","",old_name:hu,osm,""
-stare-mesto--medena,Medená,Grösslinggasse,de,"","",old_name:de,osm,""
-stare-mesto--michalska,Michalská,Mihály-utca,hu,"","",name:hu,osm,""
-stare-mesto--mickiewiczova,Mickiewiczova,Alžbetina,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--mlynske-nivy,Mlynské nivy,Malomligeti út,hu,"","",name:hu,osm,""
-stare-mesto--mlynske-nivy,Mlynské nivy,Malomligeti-út,hu,"","",old_name:hu,osm,""
-stare-mesto--mlynske-nivy,Mlynské nivy,Mühlauer-Straße,de,"","",old_name:de,osm,""
-stare-mesto--most-apollo,Most Apollo,Apollo híd,hu,"","",name:hu,osm,""
-stare-mesto--most-lanfranconi,Most Lanfranconi,Lafranconi-Brücke,de,"","",old_name:de,osm,""
-stare-mesto--most-snp,Most SNP,Neue Brücke,de,"","",old_name:de,osm,""
-stare-mesto--mostova,Mostová,Híd utca,hu,"","",name:hu,osm,""
-stare-mesto--moyzesova,Moyzesova,Szlávy út,hu,"","",name:hu,osm,""
-stare-mesto--mudronova,Mudroňova,Kráľovská cesta,"",1908,1918,name:1908-1918,osm,""
-stare-mesto--muzejna,Múzejná,Fadrusz utca,hu,"","",name:hu,osm,""
-stare-mesto--na-vrsku,Na vŕšku,Domb utca,hu,"","",name:hu,osm,""
-stare-mesto--namestie-1-maja,Námestie 1. mája,Senný trh,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--namestie-franza-liszta,Námestie Franza Liszta,Liszt Ferenc tér,hu,"","",name:hu,osm,""
-stare-mesto--namestie-ludovita-stura,Námestie Ľudovíta Štúra,Koronázási domb tér,hu,"","",name:hu,osm,""
-stare-mesto--namestie-slobody,Námestie slobody,Eszterházyho námestie,"",1908,1918,name:1908-1918,osm,""
-stare-mesto--namestie-slobody,Námestie slobody,Kniežacia lúka,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--namestie-snp,Námestie SNP,Marktplatz,de,"","",old_name:de,osm,""
-stare-mesto--nedbalova,Nedbalova,Hummel utca,hu,"","",old_name:hu,osm,""
-stare-mesto--nedbalova,Nedbalova,Hummelgasse,de,"","",old_name:de,osm,""
-stare-mesto--obchodna,Obchodná,Schöndorfergasse,de,"","",old_name:de,osm,""
-stare-mesto--obchodna,Obchodná,Széplak utca,hu,"","",name:hu,osm,""
-stare-mesto--obchodna,Obchodná,Széplak utca,hu,"","",old_name:hu,osm,""
-stare-mesto--obchodna,Obchodná,Schöndorfská,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--odborarske-namestie,Odborárske námestie,Kadlecovo námestie,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--opavska,Opavská,Tropauerova,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--palackeho,Palackého,Jägerzeile,de,"","",old_name:de,osm,""
-stare-mesto--palisady,Palisády,Védcölöp út,hu,"","",name:hu,osm,""
-stare-mesto--panenska,Panenská,Mateja Bela,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--panska,Panská,Herrengasse,de,"","",old_name:de,osm,""
-stare-mesto--panska,Panská,Szilágy Dezső-utca,hu,"","",old_name:hu,osm,""
-stare-mesto--panska,Panská,Dlhá,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--partizanska,Partizánska,Wölferl út,hu,"","",old_name:hu,osm,""
-stare-mesto--podchod-studentov-16-novembra-1989,Podchod študentov 16. novembra 1989,Astoria passage,en,"","",old_name:en,osm,""
-stare-mesto--podjazd,Podjazd,Boltív,hu,"","",old_name:hu,osm,""
-stare-mesto--polna,Poľná,Mező utca,hu,"","",name:hu,osm,""
-stare-mesto--postova,Poštová,Posta utca,hu,"","",name:hu,osm,""
-stare-mesto--prazska,Pražská,Lamacsi út,hu,"","",name:hu,osm,""
-stare-mesto--prepostska,Prepoštská,Pázmány utca,hu,"","",old_name:hu,osm,""
-stare-mesto--pribinova,Pribinova,Martanovičova,"","",1991-04-01,old_name:-1991-04-01,osm,""
-stare-mesto--prokopa-velkeho,Prokopa Veľkého,Tölténygyárhoz,hu,"","",old_name:hu,osm,""
-stare-mesto--prokopa-velkeho,Prokopa Veľkého,zur Patronenfabrik,de,"","",old_name:de,osm,""
-stare-mesto--puskinova,Puškinova,Katona József-utca,hu,"","",name:hu,osm,""
-stare-mesto--radlinskeho,Radlinského,Krajinská,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--radnicna,Radničná,Városház utca,hu,"","",name:hu,osm,""
-stare-mesto--rajska,Rajská,Reichardova,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--rudnayovo-namestie,Rudnayovo námestie,Rudnay tér,hu,"","",name:hu,osm,""
-stare-mesto--rudnayovo-namestie,Rudnayovo námestie,Székesegyház tér,hu,"","",name:hu,osm,""
-stare-mesto--rybarska-brana,Rybárska brána,Fischertorgasse,de,"","",old_name:de,osm,""
-stare-mesto--rybarska-brana,Rybárska brána,Halászkapu utca,hu,"","",old_name:hu,osm,""
-stare-mesto--safarikovo-namestie,Šafárikovo námestie,András király-tér,hu,"","",old_name:hu,osm,""
-stare-mesto--safarikovo-namestie,Šafárikovo námestie,König András-Platz,de,"","",old_name:de,osm,""
-stare-mesto--sancova,Šancová,Sánc út,hu,"","",name:hu,osm,""
-stare-mesto--sancova,Šancová,Šancová,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--sedlarska,Sedlárska,Deák utca,hu,"","",old_name:hu,osm,""
-stare-mesto--sedlarska,Sedlárska,Sattlergasse,de,"","",old_name:de,osm,""
-stare-mesto--sladkovicova,Sládkovičova,Vörösmarty utca,hu,"","",name:hu,osm,""
-stare-mesto--slovanska,Slovanská,Valónska,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--smrecianska,Smrečianska,Lenauova,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--somolickeho,Somolického,Rappelen út,hu,"","",name:hu,osm,""
-stare-mesto--spitalska,Špitálska,Kórház utca,hu,"","",name:hu,osm,""
-stare-mesto--stary-most,Starý most,Ferencz József-híd,hu,"","",old_name:hu,osm,""
-stare-mesto--stary-most,Starý most,Franz-Josephs-Brücke,de,"","",old_name:de,osm,""
-stare-mesto--stefanikova,Štefánikova,Stefánia-út,hu,"","",name:hu,osm,""
-stare-mesto--strelecka,Strelecká,Vadász utca,hu,"","",name:hu,osm,""
-stare-mesto--sturova,Štúrova,Baross utca,hu,"","",old_name:hu,osm,""
-stare-mesto--suche-myto,Suché mýto,Námestie arcivojvodu Fridricha,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--svatoplukova,Svätoplukova,Árpád-út,hu,"","",old_name:hu,osm,""
-stare-mesto--svatoplukova,Svätoplukova,Árpádstraße,de,"","",old_name:de,osm,""
-stare-mesto--tobrucka,Tobrucká,Rojkó utca,hu,"","",name:hu,osm,""
-stare-mesto--tobrucka,Tobrucká,Royko-Gasse,de,"","",old_name:de,osm,""
-stare-mesto--tobrucka,Tobrucká,Royko-utca,hu,"","",old_name:hu,osm,""
-stare-mesto--tolsteho,Tolstého,Izabella főhercegnő-út,hu,"","",name:hu,osm,""
-stare-mesto--uhrova,Uhrova,Sendleinova,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--ursulinska,Uršulínska,Orsolya utca,hu,"","",old_name:hu,osm,""
-stare-mesto--ursulinska,Uršulínska,Orsolya utca,hu,"","",name:hu,osm,""
-stare-mesto--ursulinska,Uršulínska,Ursulinergasse,de,"","",old_name:de,osm,""
-stare-mesto--vazovova,Vazovova,Pálffyho,"",1908,1945,name:1908-1945,osm,""
-stare-mesto--venturska,Ventúrska,Ventur utca,hu,"","",name:hu,osm,""
-stare-mesto--vysoka,Vysoká,Hochstraße,de,"","",old_name:de,osm,""
-stare-mesto--vysoka,Vysoká,Magas út,hu,"","",old_name:hu,osm,""
-stare-mesto--zahradnicka,Záhradnícka,Gärtnergasse,de,"","",old_name:de,osm,""
-stare-mesto--zamocka,Zámocká,Vár út,hu,"","",name:hu,osm,""
-stare-mesto--zamocnicka,Zámočnícka,Rómer Flóris utca,hu,"","",old_name:hu,osm,""
-stare-mesto--zelena,Zelená,Zöldszoba utca,hu,"","",name:hu,osm,""
-stare-mesto--zelena,Zelená,Zöldszoba utca,hu,"","",old_name:hu,osm,""
-stare-mesto--zidovska,Židovská,Vártelek utca,hu,"","",old_name:hu,osm,""
-stare-mesto--zilinska,Žilinská,Pöllnská,"",1918,1945,name:1918-1945,osm,""
-stare-mesto--zizkova,Žižkova,Podhradské nábrežie,"",1918,1938,old_name:1918-1938,osm,""
-stare-mesto--zizkova,Žižkova,Hermanna Göringa,"",1939,1945,old_name:1939-1945,osm,""
+stare-mesto--bastova,Baštová,Basteigasse,de,,,old_name:de,osm,
+stare-mesto--bastova,Baštová,Bástya utca,hu,,,old_name:hu,osm,
+stare-mesto--bazova,Bazová,Bodza-utca,hu,,,old_name:hu,osm,
+stare-mesto--bazova,Bazová,Hollergasse,de,,,old_name:de,osm,
+stare-mesto--bernolakova,Bernolákova,Leyer utca;Walterskirchen utca,hu,,,old_name:hu,osm,
+stare-mesto--bernolakova,Bernolákova,Leyergasse;Walterskirchengasse,de,,,old_name:de,osm,
+stare-mesto--bezrucova,Bezručova,Raneys István utca,hu,,,old_name:hu,osm,
+stare-mesto--bezrucova,Bezručova,Raneys-Gasse,de,,,old_name:de,osm,
+stare-mesto--biela,Biela,Corvingasse,de,,,old_name:de,osm,
+stare-mesto--biela,Biela,Korvin utca,hu,,,old_name:hu,osm,
+stare-mesto--blumentalska,Blumentálska,Virágvölgy utca,hu,,,old_name:hu,osm,
+stare-mesto--blumentalska,Blumentálska,Virágvölgy utca,hu,,,name:hu,osm,
+stare-mesto--cajakova,Čajakova,Küsserova,,1918,1945,name:1918-1945,osm,
+stare-mesto--cintorinska,Cintorínska,Temető utca,hu,,,name:hu,osm,
+stare-mesto--drevena,Drevená,Fa-utca,hu,,,name:hu,osm,
+stare-mesto--dunajska,Dunajská,Duna utca,hu,,,name:hu,osm,
+stare-mesto--farska,Farská,Neugassel,de,,,old_name:de,osm,
+stare-mesto--farska,Farská,Plébánia utca,hu,,,old_name:hu,osm,
+stare-mesto--frantiskanska,Františkánska,Barát utca,hu,,,old_name:hu,osm,
+stare-mesto--frantiskanska,Františkánska,Barát utca,hu,,,name:hu,osm,
+stare-mesto--frantiskanska,Františkánska,Franziskanergasse,de,,,old_name:de,osm,
+stare-mesto--frantiskanske-namestie,Františkánske námestie,Corvingasse,de,,,old_name:de,osm,
+stare-mesto--frantiskanske-namestie,Františkánske námestie,Dibrovo námestie,,,1991-04-01,old_name:-1991-04-01,osm,
+stare-mesto--frantiskanske-namestie,Františkánske námestie,Ferenciek tere,hu,,,name:hu,osm,
+stare-mesto--gorkeho,Gorkého,Andrássy Gyula-Gasse,de,,1918,old_name:de:until_1918,osm,
+stare-mesto--gorkeho,Gorkého,Andrássy Gyula-utca,hu,,1918,old_name:hu:until_1918,osm,
+stare-mesto--gorkeho,Gorkého,Ondrejská,,1920,1932,old_name:1920-1932,osm,
+stare-mesto--gorkeho,Gorkého,Goetheho,,1932,1939,old_name:1932-WWII,osm,
+stare-mesto--grosslingova,Grösslingová,Grössling utca,hu,,,name:hu,osm,
+stare-mesto--gundulicova,Gunduličova,Kilit-utca,hu,,,name:hu,osm,
+stare-mesto--hlavne-namestie,Hlavné námestie,Fő tér,hu,,,name:hu,osm,
+stare-mesto--hlboka-cesta,Hlboká cesta,Mély út,hu,,,old_name:hu,osm,
+stare-mesto--hlboka-cesta,Hlboká cesta,Tiefer weg,de,,,old_name:de,osm,
+stare-mesto--hodzovo-namestie,Hodžovo námestie,Grassalkovich tér,hu,,,name:hu,osm,
+stare-mesto--hodzovo-namestie,Hodžovo námestie,Mierové námestie,,,1991-04-01,old_name:-1991-04-01,osm,
+stare-mesto--hviezdoslavovo-namestie,Hviezdoslavovo námestie,Sétatér,hu,,,name:hu,osm,
+stare-mesto--kamenne-namestie,Kamenné námestie,Kő-tér,hu,,,name:hu,osm,
+stare-mesto--kapitulska,Kapitulská,Káptalan utca,hu,,,name:hu,osm,
+stare-mesto--kapucinska,Kapucínska,Kapuczínus utca,hu,,,old_name:hu,osm,
+stare-mesto--kapucinska,Kapucínska,Kapuzinergasse,de,,,old_name:de,osm,
+stare-mesto--karadzicova,Karadžičova,Zsigmond király-Gasse,de,,,old_name:de,osm,
+stare-mesto--karadzicova,Karadžičova,Zsigmond király-utca,hu,,,old_name:hu,osm,
+stare-mesto--klariska,Klariská,Klarissinnengasse,de,,,old_name:de,osm,
+stare-mesto--klariska,Klariská,Klarissza utca,hu,,,old_name:hu,osm,
+stare-mesto--klemensova,Klemensova,Kempelenova,,1908,1945,name:1908-1945,osm,
+stare-mesto--klobucnicka,Klobučnícka,Kalapos utca,hu,,,old_name:hu,osm,
+stare-mesto--kollarovo-namestie,Kollárovo námestie,Gabona tér,hu,,,name:hu,osm,
+stare-mesto--konventna,Konventná,Konvent utca,hu,,,name:hu,osm,
+stare-mesto--kosicka,Košická,Martanovičova,,,1991-04-01,old_name:-1991-04-01,osm,
+stare-mesto--kostolna,Kostolná,Templom utca,hu,,,name:hu,osm,
+stare-mesto--kupelna,Kúpeľná,Fürdő utca,hu,,,name:hu,osm,
+stare-mesto--kuzmanyho,Kuzmányho,Ujtelep út,hu,,,name:hu,osm,
+stare-mesto--kysucka,Kysucká,Simonyi Gyula Weg,de,,,old_name:de,osm,
+stare-mesto--kysucka,Kysucká,Simonyi Gyula-útca,hu,,,old_name:hu,osm,
+stare-mesto--laurinska,Laurinská,Lorenzertorgasse,de,,,old_name:de,osm,
+stare-mesto--laurinska,Laurinská,Lőrinckapu utca,hu,,,old_name:hu,osm,
+stare-mesto--lermontovova,Lermontovova,Günther Vilmos-utca,hu,,,name:hu,osm,
+stare-mesto--lovinskeho,Lovinského,Antónia út,hu,,,old_name:hu,osm,
+stare-mesto--mateja-bela,Mateja Bela,Arany János-utca,hu,,,name:hu,osm,
+stare-mesto--medena,Medená,Fučíkova,,,1991-04-01,old_name:?-1991-04-01,osm,
+stare-mesto--medena,Medená,Grössling utca,hu,,,name:hu,osm,
+stare-mesto--medena,Medená,Grössling utca,hu,,,old_name:hu,osm,
+stare-mesto--medena,Medená,Grösslinggasse,de,,,old_name:de,osm,
+stare-mesto--michalska,Michalská,Mihály-utca,hu,,,name:hu,osm,
+stare-mesto--mickiewiczova,Mickiewiczova,Alžbetina,,1908,1945,name:1908-1945,osm,
+stare-mesto--mlynske-nivy,Mlynské nivy,Malomligeti út,hu,,,name:hu,osm,
+stare-mesto--mlynske-nivy,Mlynské nivy,Malomligeti-út,hu,,,old_name:hu,osm,
+stare-mesto--mlynske-nivy,Mlynské nivy,Mühlauer-Straße,de,,,old_name:de,osm,
+stare-mesto--most-apollo,Most Apollo,Apollo híd,hu,,,name:hu,osm,
+stare-mesto--most-lanfranconi,Most Lanfranconi,Lafranconi-Brücke,de,,,old_name:de,osm,
+stare-mesto--most-snp,Most SNP,Neue Brücke,de,,,old_name:de,osm,
+stare-mesto--mostova,Mostová,Híd utca,hu,,,name:hu,osm,
+stare-mesto--moyzesova,Moyzesova,Szlávy út,hu,,,name:hu,osm,
+stare-mesto--mudronova,Mudroňova,Kráľovská cesta,,1908,1918,name:1908-1918,osm,
+stare-mesto--muzejna,Múzejná,Fadrusz utca,hu,,,name:hu,osm,
+stare-mesto--na-vrsku,Na vŕšku,Domb utca,hu,,,name:hu,osm,
+stare-mesto--namestie-1-maja,Námestie 1. mája,Senný trh,,1918,1945,name:1918-1945,osm,
+stare-mesto--namestie-franza-liszta,Námestie Franza Liszta,Liszt Ferenc tér,hu,,,name:hu,osm,
+stare-mesto--namestie-ludovita-stura,Námestie Ľudovíta Štúra,Koronázási domb tér,hu,,,name:hu,osm,
+stare-mesto--namestie-slobody,Námestie slobody,Eszterházyho námestie,,1908,1918,name:1908-1918,osm,
+stare-mesto--namestie-slobody,Námestie slobody,Kniežacia lúka,,1918,1945,name:1918-1945,osm,
+stare-mesto--namestie-snp,Námestie SNP,Marktplatz,de,,,old_name:de,osm,
+stare-mesto--nedbalova,Nedbalova,Hummel utca,hu,,,old_name:hu,osm,
+stare-mesto--nedbalova,Nedbalova,Hummelgasse,de,,,old_name:de,osm,
+stare-mesto--obchodna,Obchodná,Schöndorfergasse,de,,,old_name:de,osm,
+stare-mesto--obchodna,Obchodná,Széplak utca,hu,,,name:hu,osm,
+stare-mesto--obchodna,Obchodná,Széplak utca,hu,,,old_name:hu,osm,
+stare-mesto--obchodna,Obchodná,Schöndorfská,,1908,1945,name:1908-1945,osm,
+stare-mesto--odborarske-namestie,Odborárske námestie,Kadlecovo námestie,,1918,1945,name:1918-1945,osm,
+stare-mesto--opavska,Opavská,Tropauerova,,1918,1945,name:1918-1945,osm,
+stare-mesto--palackeho,Palackého,Jägerzeile,de,,,old_name:de,osm,
+stare-mesto--palisady,Palisády,Védcölöp út,hu,,,name:hu,osm,
+stare-mesto--panenska,Panenská,Mateja Bela,,1908,1945,name:1908-1945,osm,
+stare-mesto--panska,Panská,Herrengasse,de,,,old_name:de,osm,
+stare-mesto--panska,Panská,Szilágy Dezső-utca,hu,,,old_name:hu,osm,
+stare-mesto--panska,Panská,Dlhá,,1918,1945,name:1918-1945,osm,
+stare-mesto--partizanska,Partizánska,Wölferl út,hu,,,old_name:hu,osm,
+stare-mesto--podchod-studentov-16-novembra-1989,Podchod študentov 16. novembra 1989,Astoria passage,en,,,old_name:en,osm,
+stare-mesto--podjazd,Podjazd,Boltív,hu,,,old_name:hu,osm,
+stare-mesto--polna,Poľná,Mező utca,hu,,,name:hu,osm,
+stare-mesto--postova,Poštová,Posta utca,hu,,,name:hu,osm,
+stare-mesto--prazska,Pražská,Lamacsi út,hu,,,name:hu,osm,
+stare-mesto--prepostska,Prepoštská,Pázmány utca,hu,,,old_name:hu,osm,
+stare-mesto--pribinova,Pribinova,Martanovičova,,,1991-04-01,old_name:-1991-04-01,osm,
+stare-mesto--prokopa-velkeho,Prokopa Veľkého,Tölténygyárhoz,hu,,,old_name:hu,osm,
+stare-mesto--prokopa-velkeho,Prokopa Veľkého,zur Patronenfabrik,de,,,old_name:de,osm,
+stare-mesto--puskinova,Puškinova,Katona József-utca,hu,,,name:hu,osm,
+stare-mesto--radlinskeho,Radlinského,Krajinská,,1918,1945,name:1918-1945,osm,
+stare-mesto--radnicna,Radničná,Városház utca,hu,,,name:hu,osm,
+stare-mesto--rajska,Rajská,Reichardova,,1908,1945,name:1908-1945,osm,
+stare-mesto--rudnayovo-namestie,Rudnayovo námestie,Rudnay tér,hu,,,name:hu,osm,
+stare-mesto--rudnayovo-namestie,Rudnayovo námestie,Székesegyház tér,hu,,,name:hu,osm,
+stare-mesto--rybarska-brana,Rybárska brána,Fischertorgasse,de,,,old_name:de,osm,
+stare-mesto--rybarska-brana,Rybárska brána,Halászkapu utca,hu,,,old_name:hu,osm,
+stare-mesto--safarikovo-namestie,Šafárikovo námestie,András király-tér,hu,,,old_name:hu,osm,
+stare-mesto--safarikovo-namestie,Šafárikovo námestie,König András-Platz,de,,,old_name:de,osm,
+stare-mesto--sancova,Šancová,Sánc út,hu,,,name:hu,osm,
+stare-mesto--sancova,Šancová,Šancová,,1908,1945,name:1908-1945,osm,
+stare-mesto--sedlarska,Sedlárska,Deák utca,hu,,,old_name:hu,osm,
+stare-mesto--sedlarska,Sedlárska,Sattlergasse,de,,,old_name:de,osm,
+stare-mesto--sladkovicova,Sládkovičova,Vörösmarty utca,hu,,,name:hu,osm,
+stare-mesto--slovanska,Slovanská,Valónska,,1918,1945,name:1918-1945,osm,
+stare-mesto--smrecianska,Smrečianska,Lenauova,,1918,1945,name:1918-1945,osm,
+stare-mesto--somolickeho,Somolického,Rappelen út,hu,,,name:hu,osm,
+stare-mesto--spitalska,Špitálska,Kórház utca,hu,,,name:hu,osm,
+stare-mesto--stary-most,Starý most,Ferencz József-híd,hu,,,old_name:hu,osm,
+stare-mesto--stary-most,Starý most,Franz-Josephs-Brücke,de,,,old_name:de,osm,
+stare-mesto--stefanikova,Štefánikova,Stefánia-út,hu,,,name:hu,osm,
+stare-mesto--strelecka,Strelecká,Vadász utca,hu,,,name:hu,osm,
+stare-mesto--sturova,Štúrova,Baross utca,hu,,,old_name:hu,osm,
+stare-mesto--suche-myto,Suché mýto,Námestie arcivojvodu Fridricha,,1908,1945,name:1908-1945,osm,
+stare-mesto--svatoplukova,Svätoplukova,Árpád-út,hu,,,old_name:hu,osm,
+stare-mesto--svatoplukova,Svätoplukova,Árpádstraße,de,,,old_name:de,osm,
+stare-mesto--tobrucka,Tobrucká,Rojkó utca,hu,,,name:hu,osm,
+stare-mesto--tobrucka,Tobrucká,Royko-Gasse,de,,,old_name:de,osm,
+stare-mesto--tobrucka,Tobrucká,Royko-utca,hu,,,old_name:hu,osm,
+stare-mesto--tolsteho,Tolstého,Izabella főhercegnő-út,hu,,,name:hu,osm,
+stare-mesto--uhrova,Uhrova,Sendleinova,,1918,1945,name:1918-1945,osm,
+stare-mesto--ursulinska,Uršulínska,Orsolya utca,hu,,,old_name:hu,osm,
+stare-mesto--ursulinska,Uršulínska,Orsolya utca,hu,,,name:hu,osm,
+stare-mesto--ursulinska,Uršulínska,Ursulinergasse,de,,,old_name:de,osm,
+stare-mesto--vazovova,Vazovova,Pálffyho,,1908,1945,name:1908-1945,osm,
+stare-mesto--venturska,Ventúrska,Ventur utca,hu,,,name:hu,osm,
+stare-mesto--vysoka,Vysoká,Hochstraße,de,,,old_name:de,osm,
+stare-mesto--vysoka,Vysoká,Magas út,hu,,,old_name:hu,osm,
+stare-mesto--zahradnicka,Záhradnícka,Gärtnergasse,de,,,old_name:de,osm,
+stare-mesto--zamocka,Zámocká,Vár út,hu,,,name:hu,osm,
+stare-mesto--zamocnicka,Zámočnícka,Rómer Flóris utca,hu,,,old_name:hu,osm,
+stare-mesto--zelena,Zelená,Zöldszoba utca,hu,,,name:hu,osm,
+stare-mesto--zelena,Zelená,Zöldszoba utca,hu,,,old_name:hu,osm,
+stare-mesto--zidovska,Židovská,Vártelek utca,hu,,,old_name:hu,osm,
+stare-mesto--zilinska,Žilinská,Pöllnská,,1918,1945,name:1918-1945,osm,
+stare-mesto--zizkova,Žižkova,Podhradské nábrežie,,1918,1938,old_name:1918-1938,osm,
+stare-mesto--zizkova,Žižkova,Hermanna Göringa,,1939,1945,old_name:1939-1945,osm,

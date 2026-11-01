@@ -52,7 +52,6 @@ COPY (
         ''  AS occupation,
         ''                       AS blurb_en,
         ''                       AS blurb_sk,
-        ''                       AS category,
         ''                       AS source_note
     FROM raw.wikidata_namesake w
     ORDER BY w.label_en

@@ -38,11 +38,11 @@ SELECT
     n.wd_citizenship, 
     n.wd_occupation, 
     n.wd_instance_of, 
+    nullif(trim(n.category), '')      AS category,
     nullif(trim(n.nationality), ''), 
-    nullif(trim(n.occupation), '')
+    nullif(trim(n.occupation), ''),
     nullif(n.blurb_en, '')            AS blurb_en,
     nullif(n.blurb_sk, '')            AS blurb_sk,
-    nullif(trim(n.category), '')      AS category,
     nullif(n.source_note, '')         AS source_note
 FROM read_csv(getvariable('sheet') || getvariable('gid_namesake'), header = true, all_varchar = true) AS n;
 
@@ -65,7 +65,7 @@ SELECT
     nullif(trim(h.valid_to), '')      AS valid_to,
     h.tag,
     h.source,
-    nullif(h.note, '')                AS note
+    nullif(h.context, '')                AS context
 FROM read_csv(getvariable('sheet') || getvariable('gid_name_history'), header = true, all_varchar = true) AS h;
 
 CREATE OR REPLACE TABLE curated.nationality AS
@@ -89,6 +89,10 @@ SELECT * FROM read_csv(getvariable('sheet') || getvariable('gid_category'), head
 
 CREATE OR REPLACE TABLE curated.name_history AS
 SELECT * FROM read_csv(getvariable('sheet') || getvariable('gid_name_history'), header = true);
+
+CREATE OR REPLACE TABLE curated.occupation AS
+SELECT * FROM read_csv(getvariable('sheet') || getvariable('gid_occupation'), header = true);
+
 
 
 COPY curated.feature  TO 'data/curated/feature.csv'  (HEADER, DELIMITER ',');

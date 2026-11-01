@@ -1,0 +1,8 @@
+occupation,label_en,label_sk,sort_order
+composer,Composer,Skladateľ,1
+writer,Writer,Spisovateľ,2
+politician,Politician,Politik,3
+scientist,Scientist,Vedec,4
+military,Military figure,Vojak,5
+religious,Religious figure,Duchovný,6
+other,Other,Iné,9
