@@ -21,9 +21,11 @@ COPY (
         s.name,
         max(c.qid)               AS qid,                                -- Some squares (namestia) are included as both polygons and lines; this aggregates them since their names are identical.
         count(DISTINCT c.qid) > 1         AS qid_conflict,              -- Flags if any qid conflicts happen because max(qid) would silently drop the others.
-        ''                       AS context,        
         ''                       AS category,
-        ''                       AS category_note
+        ''                       AS category_note,
+        ''                       AS blurb_en,
+        ''                       AS blurb_sk,
+        ''                       AS context        
     FROM raw.osm_street s
     LEFT JOIN raw.etymology_coverage c
            ON c.district = s.district
