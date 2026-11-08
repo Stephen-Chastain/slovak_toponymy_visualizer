@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bratislava · názvy ulíc / street names</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.css">
+<script src="https://unpkg.com/pmtiles@4.5.0/dist/pmtiles.js"></script>
+<style>
+  :root { --bg: #000; --panel: rgba(14, 14, 14, 0.94); --text: #ececec; --muted: #9a9a9a;
+          --line: #2c2c2c; --link: #8ec7ff; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+               font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #map { position: absolute; inset: 0; }
+
+  /* ---- Legend / category filter (top left) ---- */
+  #panel { position: absolute; top: 12px; left: 12px; width: 250px; padding: 12px 14px;
+           background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+  #panel h1 { margin: 0; font-size: 15px; font-weight: 600; }
+  #panel .hint { margin: 2px 0 10px; font-size: 12px; color: var(--muted); }
+  #legend { display: grid; gap: 1px; }
+  #legend button { display: flex; align-items: center; gap: 9px; width: 100%; padding: 4px 2px;
+                   background: none; border: 0; color: var(--text); font-size: 13px; cursor: pointer; text-align: left; }
+  #legend button[aria-pressed="false"] { opacity: 0.35; }
+  #legend .swatch { width: 18px; height: 4px; border-radius: 2px; flex: none; }
+
+  /* ---- Card (right side; bottom sheet on phones) ---- */
+  #card { position: absolute; top: 12px; right: 12px; width: 360px; max-height: calc(100% - 60px);
+          box-sizing: border-box; overflow-y: auto; background: var(--panel);
+          border: 1px solid var(--line); border-radius: 10px; }
+  #card[hidden] { display: none; }
+  #card img { display: block; width: 100%; height: auto; max-height: 340px; object-fit: contain;
+              background: #000; border-radius: 10px 10px 0 0; }
+  #card img[hidden] { display: none; }
+  #card .body { padding: 14px 18px 18px; }
+  #card h2 { margin: 4px 0 0; padding: 0 34px 8px 0; font-size: 22px; font-weight: 700;
+             letter-spacing: 0.01em; border-bottom: 3px solid var(--muted); }
+  #card .credit { margin: 0 0 8px; color: var(--muted); font-size: 11px; }
+  #card .credit:empty { display: none; }
+  #card table { width: 100%; border-collapse: collapse; margin: 6px 0 4px; font-size: 13px; }
+  #card th, #card td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  #card thead th { color: var(--muted); font-weight: 500; font-size: 11px; letter-spacing: 0.05em; }
+  #card tbody th { color: var(--muted); font-weight: 400; width: 30%; }
+  #card h3 { margin: 14px 0 3px; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; font-weight: 500; }
+  #card p { margin: 0; line-height: 1.5; font-size: 14px; }
+  #card a { color: var(--link); }
+  #close { position: absolute; top: 8px; right: 10px; width: 28px; height: 28px; border: 0; border-radius: 50%;
+           background: rgba(0, 0, 0, 0.6); color: #fff; font-size: 18px; line-height: 1; cursor: pointer; }
+
+  @media (max-width: 640px) {
+    #panel { width: auto; right: 12px; }
+    #card { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 60%; border-radius: 12px 12px 0 0; }
+    #card img { border-radius: 12px 12px 0 0; max-height: 220px; }
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<section id="panel">
+  <h1>Bratislava · názvy ulíc</h1>
+  <p class="hint">Street names · kliknite na ulicu / click a street</p>
+  <div id="legend"></div>
+</section>
+
+<aside id="card" hidden>
+  <button id="close" type="button" aria-label="Zavrieť / Close">×</button>
+  <img id="c-img" alt="" hidden>
+  <div class="body">
+    <p id="c-credit" class="credit"></p>
+    <h2 id="c-name"></h2>
+    <table>
+      <thead><tr><th></th><th>EN</th><th>SK</th></tr></thead>
+      <tbody id="c-rows"></tbody>
+    </table>
+    <div id="c-context"></div>
+    <div id="c-text"></div>
+  </div>
+</aside>
+
+<script type="module">
+import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.16.0/dist/maplibre-gl.mjs';
+
+// ===========================================================================
+// Settings:
+// ===========================================================================
+const DISTRICT   = 'stare_mesto';
+const TILES_URL  = new URL(`data/${DISTRICT}.pmtiles`, location.href).href;
+const POPUPS_URL = new URL(`data/${DISTRICT}_popups.json`, location.href).href;
+const CATEGORIES_URL = new URL('data/categories.json', location.href).href;   // written by 09_export.sql
+
+// Dark basemap: free, no API key. Only its water, buildings and place labels
+// are kept (see HIDE_BASEMAP); every street line and street label is ours.
+const BASEMAP = 'https://tiles.openfreemap.org/styles/dark';
+const HIDE_BASEMAP = ['transportation', 'transportation_name'];   // OpenMapTiles layer names
+
+// Categories come from your category sheet via data/categories.json.
+// Each entry: [code, SK label, EN label, colour]. Edit them in Sheets, not here.
+let CATEGORIES = [];
+const FALLBACK = ['uncategorized', 'Nezaradené', 'Not categorised', '#5a5a5a']; // used when a street has no category
+
+// ===========================================================================
+// Data and state
+// ===========================================================================
+const active = new Set();                             // categories switched on (filled once categories load)
+const popups = new Map();                             // feature_id -> card record
+let hoveredId = null;
+let selectedId = null;
+let selectedProps = null;
+
+fetch(POPUPS_URL)
+  .then(r => (r.ok ? r.json() : []))
+  .then(rows => { rows.forEach(r => popups.set(r.feature_id, r)); if (selectedId) renderCard(); })
+  .catch(err => console.warn('Card data not loaded:', err));
+
+const categoriesLoaded = fetch(CATEGORIES_URL)
+  .then(r => (r.ok ? r.json() : []))
+  .catch(err => { console.warn('Category list not loaded:', err); return []; })
+  .then(rows => {
+    CATEGORIES = rows.map(r => [r.category, r.label_sk, r.label_en, r.color]);
+    if (!CATEGORIES.some(c => c[0] === FALLBACK[0])) CATEGORIES.push(FALLBACK);
+    CATEGORIES.forEach(c => active.add(c[0]));
+    renderLegend();
+  });
+
+// ===========================================================================
+// Map and layers
+// ===========================================================================
+const protocol = new pmtiles.Protocol();
+maplibregl.addProtocol('pmtiles', protocol.tile);
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: BASEMAP,
+  center: [17.1077, 48.1440],
+  zoom: 15,
+  minZoom: 11,
+  maxZoom: 19,
+  hash: true,                 // the URL keeps the current view, handy for sharing
+});
+map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-left');
+
+const SRC = { source: 'streets', 'source-layer': 'streets' };   // for layer definitions
+const FS  = { source: 'streets', sourceLayer: 'streets' };      // for setFeatureState()
+const isLine = ['in', ['geometry-type'], ['literal', ['LineString', 'MultiLineString']]];
+const isArea = ['in', ['geometry-type'], ['literal', ['Polygon', 'MultiPolygon']]];
+const colour = () => ['match', ['get', 'category'], ...CATEGORIES.flatMap(c => [c[0], c[3]]), FALLBACK[3]];  // built after categories load
+const inActive = () => ['in', ['get', 'category'], ['literal', [...active]]];
+const hovered  = ['boolean', ['feature-state', 'hover'], false];
+const selected = ['boolean', ['feature-state', 'selected'], false];
+const byZoom = (a, b, c) => ['interpolate', ['linear'], ['zoom'], 12, a, 15, b, 18, c];
+
+const mapLoaded = new Promise(resolve => map.once('load', resolve));
+Promise.all([mapLoaded, categoriesLoaded]).then(() => {   // waits for both the map and the category list
+  for (const layer of map.getStyle().layers) {
+    if (HIDE_BASEMAP.includes(layer['source-layer'])) map.setLayoutProperty(layer.id, 'visibility', 'none');
+  }
+  // Our shapes go under the basemap's remaining labels (district and place names).
+  const beforeId = map.getStyle().layers.find(l => l.type === 'symbol')?.id;
+
+  map.addSource('streets', {
+    type: 'vector',
+    url: `pmtiles://${TILES_URL}`,
+    promoteId: 'feature_id',      // lets hover/selection address a whole street at once
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · ' +
+                 '<a href="https://www.wikidata.org">Wikidata</a>',
+  });
+
+  // Squares and other areas
+  map.addLayer({ id: 'areas', type: 'fill', ...SRC, filter: ['all', isArea, inActive()],
+    paint: { 'fill-color': colour(),
+             'fill-opacity': ['case', selected, 0.7, hovered, 0.55, 0.35] } }, beforeId);
+
+  // White halo under a street when hovered or selected
+  map.addLayer({ id: 'halo', type: 'line', ...SRC, filter: ['all', isLine, inActive()],
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': '#ffffff', 'line-width': byZoom(4, 7, 14),
+             'line-opacity': ['case', selected, 1, hovered, 0.55, 0] } }, beforeId);
+
+  // The coloured streets
+  map.addLayer({ id: 'lines', type: 'line', ...SRC, filter: ['all', isLine, inActive()],
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': colour(), 'line-width': byZoom(1, 2.5, 7) } }, beforeId);
+
+  // Invisible wide line so thin streets are easy to hover, click or tap
+  map.addLayer({ id: 'hit', type: 'line', ...SRC, filter: ['all', isLine, inActive()],
+    paint: { 'line-color': '#000', 'line-opacity': 0, 'line-width': 16 } });
+
+  // Name labels: along each street, centred in each square. MapLibre drops
+  // labels that would overlap, so the map never clutters.
+  if (map.getStyle().glyphs) {
+    // Reuse the basemap's own label font, so the glyphs are guaranteed to exist.
+    const baseFonts = map.getStyle().layers
+      .map(l => l.layout?.['text-font'])
+      .filter(f => Array.isArray(f) && f.length && f.every(x => typeof x === 'string'));
+    const LABEL_FONT = baseFonts.find(f => f.some(x => /Regular/.test(x))) || baseFonts[0] || ['Noto Sans Regular'];
+    const AREA_FONT = baseFonts.find(f => f.some(x => /Italic/.test(x))) || LABEL_FONT;   // squares in italics if available
+    const labelLayout = {
+      'text-field': ['get', 'name'],
+      'text-font': LABEL_FONT,
+      'text-size': ['interpolate', ['linear'], ['zoom'], 14, 10, 17, 13, 19, 15],
+      'text-padding': 4,
+    };
+    const labelPaint = { 'text-color': '#e6e6e6', 'text-halo-color': '#000', 'text-halo-width': 1.4 };
+    map.addLayer({ id: 'labels-line', type: 'symbol', ...SRC, minzoom: 14, filter: ['all', isLine, inActive()],
+      layout: { ...labelLayout, 'symbol-placement': 'line', 'text-max-angle': 30 }, paint: labelPaint });
+    map.addLayer({ id: 'labels-area', type: 'symbol', ...SRC, minzoom: 14, filter: ['all', isArea, inActive()],
+      layout: { ...labelLayout, 'text-font': AREA_FONT }, paint: labelPaint });
+  }
+});
+
+// ---- Hover ----------------------------------------------------------------
+function setHover(id) {
+  if (hoveredId === id) return;
+  if (hoveredId !== null) map.setFeatureState({ ...FS, id: hoveredId }, { hover: false });
+  hoveredId = id;
+  if (id !== null) map.setFeatureState({ ...FS, id }, { hover: true });
+  map.getCanvas().style.cursor = id !== null ? 'pointer' : '';
+}
+
+const pickFeature = point =>
+  map.getLayer('hit') ? map.queryRenderedFeatures(point, { layers: ['hit', 'areas'] })[0] : undefined;
+
+map.on('mousemove', e => setHover(pickFeature(e.point)?.id ?? null));
+map.on('mouseout', () => setHover(null));
+
+// ---- Click ----------------------------------------------------------------
+map.on('click', e => {
+  const f = pickFeature(e.point);
+  f ? select(f.id, f.properties) : closeCard();
+});
+
+function select(id, props) {
+  if (selectedId !== null) map.setFeatureState({ ...FS, id: selectedId }, { selected: false });
+  selectedId = id;
+  selectedProps = props;
+  map.setFeatureState({ ...FS, id }, { selected: true });
+  renderCard();
+}
+
+function closeCard() {
+  if (selectedId !== null) map.setFeatureState({ ...FS, id: selectedId }, { selected: false });
+  selectedId = null;
+  selectedProps = null;
+  document.getElementById('card').hidden = true;
+}
+
+document.getElementById('close').addEventListener('click', closeCard);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCard(); });
+
+// ===========================================================================
+// Card: photo, name, small SK | EN table, then both blurbs
+// ===========================================================================
+const el = (tag, text) => { const n = document.createElement(tag); if (text) n.textContent = text; return n; };
+
+function link(url, text) {
+  if (!url) return el('span', '–');
+  const a = el('a', text);
+  a.href = url; a.target = '_blank'; a.rel = 'noopener';
+  return a;
+}
+
+function row(label, en, sk) {
+  const tr = el('tr');
+  tr.append(el('th', label));
+  for (const v of [en, sk]) {
+    const td = el('td');
+    td.append(typeof v === 'string' ? document.createTextNode(v || '–') : v);
+    tr.append(td);
+  }
+  return tr;
+}
+
+function renderCard() {
+  if (!selectedId) return;
+  const rec = popups.get(selectedId) || {};
+  const $ = id => document.getElementById(id);
+
+  // Photo
+  const img = $('c-img');
+  if (rec.image_url) {
+    let src = rec.image_url;
+    if (src.includes('Special:FilePath') && !src.includes('?')) src += '?width=720';  // Commons thumbnail
+    img.src = src; img.alt = rec.label_en || rec.label_sk || ''; img.hidden = false;
+  } else {
+    img.removeAttribute('src'); img.hidden = true;
+  }
+  $('c-credit').textContent = rec.image_url ? (rec.image_credit || '') : '';
+
+  // Name: official street names stay Slovak
+  $('c-name').textContent = rec.name || selectedProps?.name || '';
+
+  // Table
+  const cat = CATEGORIES.find(c => c[0] === (rec.category || selectedProps?.category)) || FALLBACK;
+  $('c-name').style.borderBottomColor = cat[3];   // header underline in the street's category colour
+  const rows = $('c-rows');
+  rows.replaceChildren(
+    row('Named after / Pomenovaná po', rec.label_en || '', rec.label_sk || ''),
+    row('Category / Kategória', cat[2], cat[1]),
+    row('Wikipedia', link(rec.wikipedia_en, 'en.wikipedia ↗'), link(rec.wikipedia_sk, 'sk.wikipedia ↗')),
+  );
+
+  // Context, on its own below the table
+  const ctx = $('c-context');
+  ctx.replaceChildren();
+  if (rec.context) ctx.append(el('h3', 'CONTEXT / KONTEXT'), el('p', rec.context));
+
+  // Blurbs, English first
+  const text = $('c-text');
+  text.replaceChildren();
+  for (const [lang, head] of [['en', 'ENGLISH'], ['sk', 'SLOVENSKY']]) {
+    const body = rec[`description_${lang}`];
+    if (body) text.append(el('h3', head), el('p', body));
+  }
+  if (!text.childElementCount) {
+    text.append(el('h3', ''), el('p', 'Popis zatiaľ chýba. / No description yet.'));
+  }
+
+  $('card').hidden = false;
+}
+
+// ===========================================================================
+// Legend doubles as the category filter
+// ===========================================================================
+function renderLegend() {
+  const box = document.getElementById('legend');
+  box.replaceChildren();
+  for (const [code, sk, en, col] of CATEGORIES) {
+    const b = el('button');
+    b.type = 'button';
+    b.setAttribute('aria-pressed', active.has(code));
+    const sw = el('span');
+    sw.className = 'swatch';
+    sw.style.background = col;
+    b.append(sw, `${en} / ${sk}`);
+    b.addEventListener('click', () => {
+      active.has(code) ? active.delete(code) : active.add(code);
+      applyFilters();
+      renderLegend();
+    });
+    box.append(b);
+  }
+}
+
+function applyFilters() {
+  if (!map.getLayer('lines')) return;
+  for (const id of ['halo', 'lines', 'hit', 'labels-line']) {
+    if (map.getLayer(id)) map.setFilter(id, ['all', isLine, inActive()]);
+  }
+  for (const id of ['areas', 'labels-area']) {
+    if (map.getLayer(id)) map.setFilter(id, ['all', isArea, inActive()]);
+  }
+}
+
+renderLegend();
+</script>
+</body>
+</html>

@@ -2,3 +2,5 @@ warehouse.duckdb
 warehouse.duckdb.wal
 data/raw/
 data/out/
+tippecanoe/
+tippecanoe.sh

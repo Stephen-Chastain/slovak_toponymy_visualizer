@@ -1,0 +1,9 @@
+[
+	{"category":"person","label_sk":"Osoba","label_en":"Person","color":"#4a90d9"},
+	{"category":"place","label_sk":"Miesto","label_en":"Place","color":"#d94a4a"},
+	{"category":"nature","label_sk":"Rastlina alebo zviera","label_en":"Plant or animal","color":"#4ad97a"},
+	{"category":"event","label_sk":"Udalosť","label_en":"Event","color":"#d9a44a"},
+	{"category":"institution","label_sk":"Inštitúcia","label_en":"Institution","color":"#9a4ad9"},
+	{"category":"occupation","label_sk":"Povolanie","label_en":"Occupation","color":"#6e5041"},
+	{"category":"other","label_sk":"Iné","label_en":"Other","color":"#808080"}
+]

@@ -20,8 +20,8 @@ SELECT
     lower(trim(f.qid_conflict)) IN ('true','1','yes') AS qid_conflict,
     nullif(trim(f.category), '')      AS category,
     nullif(f.category_note, '')       AS category_note,
-    nullif(n.blurb_en, '')            AS blurb_en,
-    nullif(n.blurb_sk, '')            AS blurb_sk,
+    nullif(f.blurb_en, '')            AS blurb_en,
+    nullif(f.blurb_sk, '')            AS blurb_sk,
     nullif(f.context, '')             AS context
 FROM read_csv(getvariable('sheet') || getvariable('gid_feature'), header = true, all_varchar = true) AS f;
 
@@ -43,8 +43,6 @@ SELECT
     nullif(trim(n.category), '')      AS category,
     nullif(trim(n.nationality), ''), 
     nullif(trim(n.occupation), ''),
-    nullif(n.blurb_en, '')            AS blurb_en,
-    nullif(n.blurb_sk, '')            AS blurb_sk,
     nullif(n.source_note, '')         AS source_note
 FROM read_csv(getvariable('sheet') || getvariable('gid_namesake'), header = true, all_varchar = true) AS n;
 
